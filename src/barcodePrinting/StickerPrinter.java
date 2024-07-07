@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package smapling;
+package barcodePrinting;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -92,7 +92,7 @@ public class StickerPrinter extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtLog);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel2.setText("Bill No");
+        jLabel2.setText("Bill ID");
 
         jLabel1.setText("Log");
 
@@ -130,7 +130,7 @@ public class StickerPrinter extends javax.swing.JFrame {
                         .addComponent(txtBillNo, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPrintLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(29, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -246,13 +246,13 @@ public class StickerPrinter extends javax.swing.JFrame {
 
     private void btnPrintLabelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintLabelsActionPerformed
         if (txtBillNo.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Enter the Bill No", "Error", JOptionPane.ERROR_MESSAGE);
-            txtLog.setText(txtLog.getText() + "\nBill Number Entered is Empty ");
+            JOptionPane.showMessageDialog(null, "Enter the Item Barcode No", "Error", JOptionPane.ERROR_MESSAGE);
+            txtLog.setText(txtLog.getText() + "\nBarcode Number Entered is Empty ");
             txtBillNo.requestFocus();
         }
 //        txtLog.setText(txtLog.getText() + "\nBill Number Entered = " + txtBillNo.getText());
-        String url = Prefs.getUrlValue() + "api/lims/samples/[SampleId]/[UserName]/[Password]";
-        url = url.replace("[SampleId]", txtBillNo.getText());
+        String url = Prefs.getUrlValue() + "api/lims/opticianPoBillBarcodes/[BillId]/[UserName]/[Password]";
+        url = url.replace("[BillId]", txtBillNo.getText());
         url = url.replace("[UserName]", Prefs.getUsername());
         url = url.replace("[Password]", Prefs.getPassword());
         System.out.println("url = " + url);

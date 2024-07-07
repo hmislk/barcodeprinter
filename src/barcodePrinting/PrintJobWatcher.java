@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package smapling;
+package barcodePrinting;
 
 import javax.print.DocPrintJob;
 import javax.print.event.PrintJobAdapter;
