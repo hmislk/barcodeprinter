@@ -219,16 +219,8 @@ public class StickerPrinter extends javax.swing.JFrame {
         Map<String, String> replacements = new HashMap<>();
         try {
             // Define all keys and their corresponding JSON fields
-            replacements.put("[name]", jsonObject.getString("name"));
-            replacements.put("[insId]", jsonObject.getString("insid"));
-            replacements.put("[tests]", jsonObject.getString("tests"));
+            replacements.put("[name]", jsonObject.getString("itemName"));
             replacements.put("[barcode]", String.valueOf(jsonObject.getLong("barcode")));
-            replacements.put("[sex]", jsonObject.getString("sex"));
-            replacements.put("[age]", jsonObject.getString("age"));
-            replacements.put("[deptId]", jsonObject.getString("deptid"));
-            replacements.put("[tube]", jsonObject.getString("tube"));
-            replacements.put("[billDate]", jsonObject.getString("billDate"));
-            // Optional: Add more fields if necessary
 
             // Perform all replacements in the template
             for (Map.Entry<String, String> entry : replacements.entrySet()) {
