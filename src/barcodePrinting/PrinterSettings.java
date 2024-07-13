@@ -261,12 +261,18 @@ public class PrinterSettings extends javax.swing.JFrame {
 
     private void btnAddSampleCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSampleCodeActionPerformed
         String zplCode = "^XA\n"
-                + "^LH0,0\n"
-                + "^FO30,20,^ADN,18,10^FD#[name]^FS\n"
-                + "^LH0,30\n"
-                + "^FO30,10,^BCN,100,Y,N,N^FD[barcode]^FS\n"
+                + "^CF0,30\n"
+                + "^PW406\n"
+                + "^LL176\n"
+                + "^FO20,20^FD[name]^FS\n"
+                + "^CF0,40\n"
+                + "^FO20,70^FD[rate]^FS\n"
+                + "^BY2,2,80\n"
+                + "^FO20,120^BCN,,Y,N,N\n"
+                + "^FD[barcode]^FS\n"
                 + "^XZ\n";
         txtPrintSample.setText(zplCode);
+
     }//GEN-LAST:event_btnAddSampleCodeActionPerformed
 
     /**
