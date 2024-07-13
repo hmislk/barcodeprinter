@@ -219,12 +219,18 @@ public class StickerPrinter extends javax.swing.JFrame {
         Map<String, String> replacements = new HashMap<>();
         try {
             // Define all keys and their corresponding JSON fields
-            replacements.put("[name]", jsonObject.getString("itemName"));
+            replacements.put("[name]", jsonObject.getString("itemName").trim());
             replacements.put("[barcode]", String.valueOf(jsonObject.getLong("barcode")));
+            replacements.put("[rate]", String.valueOf(jsonObject.getString("rate")));
 
             // Perform all replacements in the template
             for (Map.Entry<String, String> entry : replacements.entrySet()) {
-                resultTemplate = resultTemplate.replace(entry.getKey(), entry.getValue());
+                // Ensure that the placeholder exists in the template before replacing
+                if (resultTemplate.contains(entry.getKey())) {
+                    resultTemplate = resultTemplate.replace(entry.getKey(), entry.getValue());
+                } else {
+                    Logger.getLogger(StickerPrinter.class.getName()).log(Level.WARNING, "Placeholder not found in template: " + entry.getKey());
+                }
             }
 
         } catch (JSONException ex) {
